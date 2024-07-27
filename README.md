@@ -43,6 +43,7 @@ The proliferation of human-AI ecosystems, such as navigation services, raises co
  - [Abstract](#abstract)
  - [Usage](#usage)
  - [Setup](#setup)
+ - [Data Availability](#data)
 ---
 
 
@@ -146,3 +147,9 @@ In a Terminal, execute the following steps:
 1. Run the command `open ~/.bash_profile`, this will open the `.bash_profile` file in TextEdit;
 2. Add the following line to that document: `export SUMO_HOME="/your/path/to/sumo-<version>"` and save it;
 3. Apply the changes by entering: `source ~/.bash_profile`.
+
+<a id='data' name='data'></a>
+## Data Availability
+Please note that the OctoTelematics dataset utilized in our study is proprietary and not publicly available. Therefore, the original OD-matrices employed in this research cannot be included in this repository. However, we have provided the necessary code to generate a realistic OD-matrix for Milan using publicly accessible datasets. This code is flexible and can be adapted for use with any data source. Additionally, we offer a routine to create random OD matrices, which can be useful in scenarios lacking trajectory data.
+
+Furthermore, due to proprietary restrictions, the specific navigation service suggestions used in our study cannot be included. Nonetheless, we have supplied the code to generate a fastest path assignment, replicating the functionality of a navigation service prototype. Moreover, we include a script to generate perturbations of the fastest paths for non-routed vehicles. This ensures that the code can be adapted and applied to various datasets and scenarios, facilitating research on navigation services' impact on urban traffic patterns and CO2 emissions.

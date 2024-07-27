@@ -1,7 +1,6 @@
 <div align="center">
   <h2>Navigation Services Amplify Concentration of Traffic and Emissions in Our Cities </h2>
 </div>
-
 ____
 
 ### Authors:

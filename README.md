@@ -67,6 +67,8 @@ Our simulation approach addresses the challenges posed by the complexity of tran
 
 ## How to install and configure SUMO (Simulation of Urban MObility) 🚗🚙🛻
 
+<p align="center"><img width=70% src="https://raw.githubusercontent.com/eclipse/sumo/main/docs/web/docs/images/multiple-screenshots.png"></p>
+
 ### Install SUMO
 
 Please always refer to the [SUMO Installation page](https://sumo.dlr.de/docs/Installing/index.html)

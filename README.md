@@ -1,6 +1,6 @@
 <div align="center">
-  <h2>Navigation Services Amplify Concentration of Traffic and Emissions in Our Cities </h2>
-  <img src="images/img_intro.webp" width="400">
+  <h1>Navigation Services Amplify Concentration <br> of Traffic and Emissions in Our Cities</h1> 
+  <img src="images/img_intro.webp" width="300">
 </div>
 
 ### Authors:
@@ -35,7 +35,6 @@ The proliferation of human-AI ecosystems, such as navigation services, raises co
 ![numpy](https://img.shields.io/badge/NumPy-013243.svg?style=for-the-badge&logo=NumPy&logoColor=white)
 ![pandas](https://img.shields.io/badge/pandas-150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![osm](https://img.shields.io/badge/OpenStreetMap-7EBC6F.svg?style=for-the-badge&logo=OpenStreetMap&logoColor=white)
-![folium](https://img.shields.io/badge/Folium-77B829.svg?style=for-the-badge&logo=Folium&logoColor=white)
 
 
 <a id='toc' name='toc'></a>

@@ -20,8 +20,9 @@ Affiliations:<br>
 
 ____
 
-Pre-print available [here](https://arxiv.org/abs/2306.13704).
+Pre-print available [here](XXX).
 
 ____
 
-This repository contains the Python code necessary to replicate the analysis conducted in our work on the urban impact of navigation services. We employ SUMO, a mobility simulator, to simulate the impact of navigation services at varying adoption rates. To use the code and reproduce the analysis, follow the instructions provided in this README file.
+
+The proliferation of human-AI ecosystems, such as navigation services, raises concerns about their large-scale social and environmental impacts. Our study employs a simulation framework to assess how navigation services influence road network usage and CO2 emissions in urban environments. This repository provides the necessary Python code and tools to reproduce our analysis using the SUMO mobility simulator, offering insights into the collective impact of navigation services at varying adoption rates. To use the code and replicate the analysis, follow the instructions provided in this README file.

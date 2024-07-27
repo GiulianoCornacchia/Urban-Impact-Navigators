@@ -19,3 +19,9 @@ Affiliations:<br>
 <sup>3</sup> Scuola Normale Superiore, Pisa, Italy <br>
 
 ____
+
+Pre-print available [here](https://arxiv.org/abs/2306.13704).
+
+____
+
+This repository contains the Python code necessary to replicate the analysis conducted in our work on the urban impact of navigation services. We employ SUMO, a mobility simulator, to simulate the impact of navigation services at varying adoption rates. To use the code and reproduce the analysis, follow the instructions provided in this README file.

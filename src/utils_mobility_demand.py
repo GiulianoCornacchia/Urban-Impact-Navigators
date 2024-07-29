@@ -7,7 +7,7 @@ import pandas as pd
 import geopandas as gpd
 import sumolib
 from tqdm.notebook import tqdm
-#from routing_utils import from_sumo_to_igraph_network, get_shortest_path
+from routing_utils import from_sumo_to_igraph_network, get_shortest_path
 from math import sqrt, sin, cos, pi, asin
 import xml
 from xml.dom import minidom

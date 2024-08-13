@@ -21,7 +21,7 @@ Affiliations:<br>
 
 ____
 
-Pre-print available [here](XXX).
+Pre-print available [here](https://arxiv.org/abs/2407.20004v1).
 
 ____
 

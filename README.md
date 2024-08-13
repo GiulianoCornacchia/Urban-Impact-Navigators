@@ -46,7 +46,19 @@ The proliferation of human-AI ecosystems, such as navigation services, raises co
  - [Data Availability](#data)
 ---
 
+If you use the code in this repository, please cite our paper:
 
+```
+@misc{cornacchia2024navigation,
+      title={Navigation services amplify concentration of traffic and emissions in our cities}, 
+      author={Giuliano Cornacchia and Mirco Nanni and Dino Pedreschi and Luca Pappalardo},
+      year={2024},
+      eprint={2407.20004},
+      archivePrefix={arXiv},
+      primaryClass={cs.MA},
+      url={https://arxiv.org/abs/2407.20004}, 
+}
+```
 
 
 <a id='abstract' name='abstract'></a>

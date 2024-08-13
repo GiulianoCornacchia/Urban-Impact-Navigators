@@ -41,7 +41,7 @@ The proliferation of human-AI ecosystems, such as navigation services, raises co
 # Table of Contents
 
  - [Abstract](#abstract)
- - [Usage](#usage)
+ - [Notebook Descriptions](#notebook)
  - [Setup](#setup)
  - [Data Availability](#data)
 ---
@@ -70,6 +70,23 @@ Although navigation services recommendations can help reduce CO2 emissions when 
 We summarize these discoveries in a non-linear function that connects the marginal increase of conformity with the marginal reduction in CO2 emissions.
 Our simulation approach addresses the challenges posed by the complexity of transportation systems and the lack of data and algorithmic transparency.
 
+
+<a id="notebook" name="notebook"></a>
+## Notebooks Descriptions
+
+- **`0_preprocess_trajectory_dataset.ipynb`**: This notebook focuses on preprocessing trajectory data to generate a collection of trips, which will later be used for inferring Origin-Destination (OD) matrices. The notebook is adaptable for any vehicular trace dataset and provides parameters for pre-processing and segmenting trajectories into trips.
+
+- **`1_create_od_matrix.ipynb`**: This notebook computes an OD matrix where each element represents the number of trips starting and ending in specific tiles of an urban environment. It includes routines for generating OD matrices from GPS trajectories or creating random OD matrices. It is flexible and can be adapted to various data sources, with an example provided for Milan.
+
+- **`2_generate_mobility_demand_from_od_matrix.ipynb`**: This notebook aims to generate a realistic Mobility Demand from an OD matrix. It defines a set of trips within an urban environment, selecting origin and destination pairs based on a probability proportional to the OD matrix values. The notebook includes utilities for parameter configuration and handles the iteration process for generating multiple trips.
+
+- **`3_create_routed_paths.ipynb`**: This notebook uses the `duarouter` algorithm to create routes connecting the origins and destinations of vehicles in the mobility demand. It allows for both the fastest path assignment (a navigation service prototype) and randomized path perturbation based on a configurable parameter, simulating variability in driver behavior and route selection.
+
+- **`4_launcher_experiments.ipynb`**: This notebook is responsible for launching SUMO (Simulation of Urban MObility) experiments. It includes settings for experiment parameters to simulate different traffic scenarios.
+
+- **`5_compute_results.ipynb`**: This notebook aggregates the results of simulations into a comprehensive dictionary.
+
+- **`6_create_plots.ipynb`**: This notebook generates plots related to CO2 emissions and route diversity based on the aggregated results computed in the previous notebook. It uses specific dictionaries from the results to visualize the outcomes of the experiments.
 
 
 

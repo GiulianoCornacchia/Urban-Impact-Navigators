@@ -16,13 +16,16 @@ def create_additional_file_emissions(emissions_filename, output_filename):
 
     # Create the root element
     root = ET.Element("additional")
+    
+    # use the absoulte path
+    abs_emissions_filename = os.path.abspath(emissions_filename)
 
     # Create the edgeData element with attributes
     edge_data = ET.SubElement(root, "edgeData")
     edge_data.set("id", "EMISSIONS")
     edge_data.set("type", "emissions")
     edge_data.set("withInternal", "true")
-    edge_data.set("file", emissions_filename)
+    edge_data.set("file", abs_emissions_filename)
     edge_data.set("excludeEmpty", "true")
 
     # Create the XML tree
@@ -127,7 +130,7 @@ print("<><><><><>")
 # Output Filenames
 emissions_filename = f"{output_folder}edge_emissions.xml"
 trip_info_filename = f"{output_folder}trips_info.xml"
-add_file_filename = f"./add_{simulation_id}.xml"
+add_file_filename = f"./tmp_folder_add_files/add_{simulation_id}.xml"
 stats_filename = f"{output_folder}simulation_info.xml"
 log_filename = f"{output_folder}log.json"
 
@@ -142,6 +145,7 @@ if output_edges:
 opt_measures = ""
 
 if output_edges:
+    #absolute_path_add_file = os.path.abspath(add_file_filename)
     opt_measures += f"-a {add_file_filename}"
     
 if output_trips:
@@ -158,7 +162,7 @@ if use_gui:
     command_sumo = f"sumo-gui -n {net_file} -r {route_file} -W {opt_measures}".split(" ")
 else:
     command_sumo = f"sumo -n {net_file} -r {route_file} -W {opt_measures}".split(" ")
-    
+
 script = subprocess.Popen(command_sumo, cwd=".")   
     
     

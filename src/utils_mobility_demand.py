@@ -811,4 +811,74 @@ def generate_intervals(N, S):
         end = (i + 1) * interval_size - 1 if i < S - 1 else N - 1
         intervals.append((start, end+1))
     return intervals
+
+
+def compute_p_cpc_choices(od_matrix, choices_list):
+    matrix_test = np.zeros((od_matrix.shape))
+    for i, j in choices_list:
+        matrix_test[i][j]+=1 
+        
+    return pearson_cpc_matrices(od_matrix, matrix_test)
     
+
+def repair_invalid_routes(dict_mobility_demand, road_network_path, threshold_km=1.2, allow_self_tiles=False):
+    
+    list_invalid_ids = invalid_routes_in_demand(dict_mobility_demand, road_network_path)
+
+    while len(list_invalid_ids)>0:
+
+        print(f"Repair {len(list_invalid_ids)} invalid routes.")
+
+        for id_to_repair in list_invalid_ids:
+            
+            seed = int(id_to_repair.split("_")[-1])
+
+            print(id_to_repair, seed)
+
+            od_list_repair, _ = create_traffic_demand_from_matrix(od_matrix, dict_mapping, 1, road_network, 
+                                                              node_mode=node_mode, threshold_km=threshold_km, 
+                                                                  random_seed=seed, allow_self_tiles=allow_self_tiles)
+
+            dict_mobility_demand[id_to_repair]["element"] = od_list_repair[0]
+
+
+        list_invalid_ids = invalid_routes_in_demand(dict_mobility_demand, road_network_path)
+        
+
+def apply_duarouter(route_file_path, road_network_path, weight, output_demand_filename, seed_duarouter=None, rm_loops="true"):
+    
+
+    if seed_duarouter is None:
+        np.random.seed()
+        seed_duarouter = np.random.randint(0, 1e6)
+
+    options_duarouter = f"--weights.random-factor {weight} --routing-threads 32"
+    
+    command_str = "duarouter --route-files "+route_file_path+" "+\
+        " --net-file "+road_network_path+" "+options_duarouter+\
+    " --random false --seed "+str(seed_duarouter)+\
+    " --output-file "+output_demand_filename + " --junction-taz true"
+            
+    # call duarouter process
+    p = subprocess.Popen(command_str, shell=True, stdout=subprocess.PIPE, 
+                                     stderr=subprocess.STDOUT)
+    retval = p.wait()
+
+    # remove .alt file
+    os.remove(output_demand_filename.split(".rou")[0]+".rou.alt"+output_demand_filename.split(".rou")[1])
+
+    
+def create_dict_set_vehicles(N, n_rep_min, n_rep_max, percentages):
+
+    dict_set_vehicles = {}
+
+    for pct in percentages:
+        if pct not in [0, 100]:
+            dict_set_vehicles[str(pct)] = {}
+            for rep in range(n_rep_min, n_rep_max+1):
+                max_ind = int((pct * N)/100)
+                permutation_array = np.random.permutation(np.arange(N))[:max_ind]
+                # take the pct elements 
+                dict_set_vehicles[str(pct)][str(rep)] = [int(x) for x in permutation_array]
+                
+    return dict_set_vehicles

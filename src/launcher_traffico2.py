@@ -101,6 +101,9 @@ output_simulations = f"{folder_out}{city}/{demand_name_result}/"
 # Create output directories if they don't exist
 os.makedirs(output_simulations, exist_ok=True)
 
+# Create temporary directory additional files
+os.makedirs("./tmp_folder_add_files", exist_ok=True)
+
 # Road network path
 road_net = args.road_network
 
@@ -162,6 +165,7 @@ for routes_to_simulate in routes_chunks:
     for route_file in routes_to_simulate:
         s = f"-n {road_net} -r {route_file} -i {sim_id + '_'} -o {output_simulations}"
         command_list = ['python', "launcher_sumo_simulation.py"] + s.split(" ") + ["--sumo-opt", sumo_opt.replace('"', "")]
+
         script = subprocess.Popen(command_list, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         processes.append(script)
     for process in processes:

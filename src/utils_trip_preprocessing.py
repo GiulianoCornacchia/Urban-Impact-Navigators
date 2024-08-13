@@ -81,6 +81,7 @@ def _my_stay_locations_trajectory(tdf, stop_radius, minutes_for_a_stop, leaving_
     return stay_locations
 
 
+
 def _my_stay_locations_array(lat_lng_dtime_other, stop_radius, minutes_for_a_stop, leaving_time, no_data_for_minutes, min_speed_kmh):
     """
     Create a stop if the user spend at least `minutes_for_a_stop` minutes

@@ -153,9 +153,9 @@ if output_trips:
     
 if output_log:   
     opt_measures += f" --statistic-output {stats_filename}"
-    
-opt_measures+=f" {sumo_opt}"
 
+if sumo_opt != "":
+    opt_measures += f" {sumo_opt}"
 
 # Run command
 if use_gui:

@@ -36,6 +36,15 @@ The proliferation of human-AI ecosystems, such as navigation services, raises co
 ![pandas](https://img.shields.io/badge/pandas-150458.svg?style=for-the-badge&logo=pandas&logoColor=white)
 ![osm](https://img.shields.io/badge/OpenStreetMap-7EBC6F.svg?style=for-the-badge&logo=OpenStreetMap&logoColor=white)
 
+### Requirements
+
+This project uses the following versions:
+
+![Python](https://img.shields.io/badge/Python-3.9.18-blue) ![SUMO](https://img.shields.io/badge/SUMO-1.19.0-brightgreen)
+
+- **Python**: The code is written in Python 3.9.18.
+- **SUMO**: Simulations are run using SUMO version 1.19.0.
+
 
 <a id='toc' name='toc'></a>
 # Table of Contents

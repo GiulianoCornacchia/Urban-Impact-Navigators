@@ -41,7 +41,7 @@ The proliferation of human-AI ecosystems, such as navigation services, raises co
 # Table of Contents
 
  - [Abstract](#abstract)
- - [Notebook Descriptions](#notebook)
+ - [Code Descriptions](#notebook)
  - [Setup](#setup)
  - [Data Availability](#data)
 ---
@@ -72,7 +72,9 @@ Our simulation approach addresses the challenges posed by the complexity of tran
 
 
 <a id="notebook" name="notebook"></a>
-## Notebooks Descriptions
+## Code Descriptions
+
+### Notebooks
 
 - **`0_preprocess_trajectory_dataset.ipynb`**: This notebook focuses on preprocessing trajectory data to generate a collection of trips, which will later be used for inferring Origin-Destination (OD) matrices. The notebook is adaptable for any vehicular trace dataset and provides parameters for pre-processing and segmenting trajectories into trips.
 
@@ -88,8 +90,54 @@ Our simulation approach addresses the challenges posed by the complexity of tran
 
 - **`6_create_plots.ipynb`**: This notebook generates plots related to CO2 emissions and route diversity based on the aggregated results computed in the previous notebook. It uses specific dictionaries from the results to visualize the outcomes of the experiments.
 
+### Scripts
+
+- **`launcher_sumo_simulation.py`**: This script is designed to execute a single traffic simulation using the SUMO (Simulation of Urban MObility) simulator. It takes inputs such as a road network file and a route file, simulates the movement of vehicles, and outputs data related to traffic patterns and emissions. The script can also convert XML outputs to CSV for further analysis. It provides options for running the simulation with or without a graphical user interface (GUI) and collecting detailed trip and edge information.
+- **`launcher_traffico2.py`**: This script automates the execution of multiple simulations across various adoption rates of navigation services. It calculates "Mixed Routed Paths" (MRPs), which combine different routing strategies and simulates their effects on urban traffic and emissions. The script allows for a detailed analysis of how different levels of navigation service adoption influence route diversity, traffic congestion, and CO2 emissions. It uses the `launcher_sumo_simulation.py` script for each individual simulation.
 
 
+### Parameters Table for `launcher_sumo_simulation.py`
+
+| Parameter              | Description                                           | Required | Default Value |
+|------------------------|-------------------------------------------------------|----------|---------------|
+| `-n`, `--net-file`      | Path to the SUMO network file                         | Yes      | None          |
+| `-r`, `--route-file`    | Path to the SUMO route file                           | Yes      | None          |
+| `-i`, `--exp-id`        | Experiment identifier                                 | Yes      | None          |
+| `-o`, `--output-dir`    | Output directory for results                          | Yes      | None          |
+| `--edges-info`          | Collect edge-related measures (1 = yes, 0 = no)       | No       | 1             |
+| `--trips-info`          | Collect trip-related measures (1 = yes, 0 = no)       | No       | 1             |
+| `--log`                 | Create a log of the simulation (1 = yes, 0 = no)      | No       | 1             |
+| `--gui`                 | Run SUMO with GUI (1 = yes, 0 = no)                   | No       | 0             |
+| `--sumo-opt`            | Additional SUMO options                               | No       | "" (empty)    |
+
+### Example Command:
+```bash
+python launcher_sumo_simulation.py -n network.net.xml -r routes.rou.xml -i exp1 -o ./output --edges-info 1 --trips-info 1 --log 1 --gui 0 --sumo-opt "--time-to-teleport 120"
+```
+
+### Parameters Table for `launcher_traffico2.py`
+
+| Parameter                | Description                                                | Required | Default Value         |
+|--------------------------|------------------------------------------------------------|----------|-----------------------|
+| `-c`, `--city`           | Name of the city                                            | Yes      | None                  |
+| `-v`, `--n-vehicles`     | Number of vehicles                                          | Yes      | None                  |
+| `-b`, `--base`           | Base name                                                   | Yes      | None                  |
+| `-n`, `--navigator`      | Navigator name                                              | Yes      | None                  |
+| `-g`, `--road-network`   | Path to the road network file                               | Yes      | None                  |
+| `--path-base`            | Route file for non-routed (base) vehicles                   | Yes      | None                  |
+| `--path-navigator`       | Route file for routed (navigator) demands                   | Yes      | None                  |
+| `--path-vehicles-mapping` | Path for vehicle mapping (routed vs non-routed)            | Yes      | None                  |
+| `--list-pct`             | List of adoption rates (e.g., "0-10-20")                    | No       | "" (0 to 100 in steps of 10) |
+| `-o`, `--output-dir`     | Output folder                                               | Yes      | None                  |
+| `-z`, `--zipped`         | Zipped option for output files (1 = yes, 0 = no)            | No       | 0                     |
+| `--rep-min`              | Minimum repetition                                          | No       | 0                     |
+| `--rep-max`              | Maximum repetition                                          | No       | 9                     |
+| `--njobs`                | Number of parallel jobs                                     | No       | 20                    |
+
+### Example Command:
+```bash
+python launcher_traffico2.py -c city_name -v 1000 -b base_name -n navigator_name -g road_network.net.xml --path-base base_route.rou.xml --path-navigator navigator_route.rou.xml --path-vehicles-mapping vehicle_mapping.json --list-pct 0-10-20-30-40-50-60-70-80-90-100 -o ./output_dir --zipped 1 --rep-min 0 --rep-max 9 --njobs 20
+```
 
 
 <a id='setup' name='setup'></a>

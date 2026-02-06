@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>Algorithmic navigation reduces route diversity and amplifies emissions inequality in cities</h1> 
+  <h1>Navigation services concentrate traffic and emissions in urban spaces</h1> 
   <img src="images/img_intro.webp" width="700">
 </div>
 

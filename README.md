@@ -91,19 +91,22 @@ Our simulation approach addresses the challenges posed by the complexity of tran
 ## Repository Structure
 
 The repository is organized as follows:
+```
 .
 ├── data/
-│ ├── bbox_cities/ # Bounding boxes for cities
-│ ├── road_networks/ # Road network files used in simulations
-│ └── gps_data/ # GPS datasets
-│ └── readme.txt
-├── images/ # Figures used in the README
-├── results_article/ # Precomputed results used in the paper
-│ ├── results_florence.json.gz
-│ ├── results_milan.json.gz
-│ └── results_rome.json.gz
-├── src/ # Python scripts for simulations
+│   ├── bbox_cities/        # Bounding boxes for cities
+│   ├── road_networks/      # Road network files used in simulations
+│   └── gps_data/           # GPS datasets
+│       └── readme.txt
+├── images/                 # Figures used in the README
+├── results_article/        # Precomputed results used in the paper
+│   ├── results_florence.json.gz
+│   ├── results_milan.json.gz
+│   └── results_rome.json.gz
+├── src/                    # Python scripts for simulations
 ├── README.md
+
+```
 
 
 ### Key folders

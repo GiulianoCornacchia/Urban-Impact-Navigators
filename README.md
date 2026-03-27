@@ -47,13 +47,20 @@ This project uses the following versions:
 
 
 <a id='toc' name='toc'></a>
+
 # Table of Contents
 
  - [Abstract](#abstract)
+ - [Repository Structure](#repo-structure)
  - [Code Descriptions](#notebook)
+ - [Precomputed Results](#results)
  - [Setup](#setup)
  - [Data Availability](#data)
+
 ---
+
+
+
 
 If you use the code in this repository, please cite our paper:
 
@@ -78,6 +85,41 @@ Our study employs a simulation framework to assess navigation services' influenc
 Although navigation services recommendations can help reduce CO2 emissions when their adoption rate is low, these benefits diminish or even disappear when the adoption rate is high and exceeds a certain city- and service-dependent threshold.
 We summarize these discoveries in a non-linear function that connects the marginal increase of conformity with the marginal reduction in CO2 emissions.
 Our simulation approach addresses the challenges posed by the complexity of transportation systems and the lack of data and algorithmic transparency.
+
+
+<a id="repo-structure" name="repo-structure"></a>
+## Repository Structure
+
+The repository is organized as follows:
+.
+├── data/
+│ ├── bbox_cities/ # Bounding boxes for cities
+│ ├── road_networks/ # Road network files used in simulations
+│ └── gps_data/ # GPS datasets
+│ └── readme.txt
+├── images/ # Figures used in the README
+├── results_article/ # Precomputed results used in the paper
+│ ├── results_florence.json.gz
+│ ├── results_milan.json.gz
+│ └── results_rome.json.gz
+├── src/ # Python scripts for simulations
+├── README.md
+
+
+### Key folders
+
+- **`data/`**  
+  Contains all input data required to build simulations, including road networks and GPS traces.
+
+- **`results_article/`**  
+  Contains the **precomputed results** used in the main paper for each city.  
+  These can be used to reproduce figures and analyses without running simulations.
+
+- **`src/`**  
+  Contains scripts to launch simulations and process outputs.
+
+- **`images/`**  
+  Contains visual assets used in this README.
 
 
 <a id="notebook" name="notebook"></a>
@@ -147,6 +189,100 @@ python launcher_sumo_simulation.py -n network.net.xml -r routes.rou.xml -i exp1 
 ```bash
 python launcher_traffico2.py -c city_name -v 1000 -b base_name -n navigator_name -g road_network.net.xml --path-base base_route.rou.xml --path-navigator navigator_route.rou.xml --path-vehicles-mapping vehicle_mapping.json --list-pct 0-10-20-30-40-50-60-70-80-90-100 -o ./output_dir --zipped 1 --rep-min 0 --rep-max 9 --njobs 20
 ```
+
+<a id="results" name="results"></a>
+## Precomputed Results
+
+We also include in the repository **precomputed results** for the three analyzed cities used in the main scientific article.  
+These results allow users to reproduce figures and analyses **without running the full simulation pipeline**, and can also be used to explore the data further and derive new insights.
+
+Each city is associated with a compressed JSON file located in the `results_article/` folder:
+
+- `results_florence.json.gz`
+- `results_milan.json.gz`
+- `results_rome.json.gz`
+
+Each file contains a nested dictionary structured as follows:
+
+```python
+results[navigation_service][non_routed_routing_strategy][n_vehicles][measure][routed_percentage] = [rep_1, ..., rep_10]
+```
+
+### Structure Description
+
+* **`navigation_service`**
+  Navigation system used for routed vehicles.
+  Examples: `gmaps`, `bing`, `mapbox`, `tomtomFastest`, `tomtomEco`, `tomtomShort`, `IGfastest`.
+
+* **`non_routed_routing_strategy`**
+  Routing criterion used for non-routed vehicles (based on `duarouter`).
+  Examples: `myduaw3`, `myduaw5`, `myduaw7`.
+
+* **`n_vehicles`**
+  Total number of vehicles in the simulation, used to model different traffic loads.
+  Values range from `5000` to `100000`.
+
+- **`measure`**  
+  Metric computed from the simulation. Key measures include:
+
+  - `total_co2`
+  - `total_co2_routed`
+  - `total_co2_non_routed`
+  - `total_duration`
+  - `total_waiting_time`
+  - `edge_co2_entropy`
+  - `edge_co2_gini`
+  - `redundancy`
+
+  Additional measures are also available in the results files.
+
+* **`routed_percentage`**
+  Percentage of vehicles following navigation recommendations.
+  Values: `0`, `10`, `20`, ..., `100`.
+
+- **Repetitions**  
+  Each configuration is repeated **10 times**, and the dictionary stores a list of values corresponding to these repetitions.  
+  Note that when the routed percentage is **100%**, only a single value is stored, as no randomness is involved in the routing (i.e., no `duarouter` variability).
+
+---
+
+### Example
+
+```python
+results["gmaps"]["myduaw5"]["10000"]["total_co2"]["30"]
+```
+
+This returns a list of 10 values corresponding to:
+
+* navigation service: **Google Maps (`gmaps`)**
+* non-routed routing strategy: **`myduaw5`**
+* number of vehicles: **10,000**
+* routed vehicles: **30%**
+* metric: **total CO2 emissions**
+
+---
+
+### How to use
+
+You can directly load the results dictionary and compute statistics (e.g., mean, variance) or generate plots without running SUMO simulations:
+
+```python
+import gzip
+import json
+import numpy as np
+
+with gzip.open("results_article/results_milan.json.gz", "rt") as f:
+    results = json.load(f)
+
+values = results["gmaps"]["myduaw5"]["10000"]["total_co2"]["30"]
+mean_value = np.mean(values)
+```
+
+For full reproducibility of figures in the paper, see:
+
+* `5_compute_results.ipynb`
+* `6_create_plots.ipynb`
+
 
 
 <a id='setup' name='setup'></a>

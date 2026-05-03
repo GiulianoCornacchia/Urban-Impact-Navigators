@@ -53,34 +53,13 @@ This project uses the following versions:
  - [Setup](#setup)
  - [Data Availability](#data)
 
----
-
-
-
-
-If you use the code in this repository, please cite our paper:
 
 ```
-@misc{cornacchia2024navigation,
-      title={Navigation services amplify concentration of traffic and emissions in our cities}, 
-      author={Giuliano Cornacchia and Mirco Nanni and Dino Pedreschi and Luca Pappalardo},
-      year={2024},
-      eprint={2407.20004},
-      archivePrefix={arXiv},
-      primaryClass={cs.MA},
-      url={https://arxiv.org/abs/2407.20004}, 
-}
-```
-
 
 <a id='abstract' name='abstract'></a>
 ## Abstract
 
-The proliferation of human-AI ecosystems involving human interaction with algorithms, such as assistants and recommenders, raises concerns about large-scale social behaviour. Despite evidence of such phenomena across several contexts, the collective impact of GPS navigation services remains unclear: while beneficial to the user, they can also cause chaos if too many vehicles are driven through the same few roads.  
-Our study employs a simulation framework to assess navigation services' influence on road network usage and CO2 emissions. The results demonstrate a universal pattern of amplified conformity: increasing adoption rates of navigation services cause a reduction of route diversity of mobile travellers and increased concentration of traffic and emissions on fewer roads, thus exacerbating an unequal distribution of negative externalities on selected neighbourhoods.
-Although navigation services recommendations can help reduce CO2 emissions when their adoption rate is low, these benefits diminish or even disappear when the adoption rate is high and exceeds a certain city- and service-dependent threshold.
-We summarize these discoveries in a non-linear function that connects the marginal increase of conformity with the marginal reduction in CO2 emissions.
-Our simulation approach addresses the challenges posed by the complexity of transportation systems and the lack of data and algorithmic transparency.
+The collective impact of navigation services remains unclear: while often beneficial to individual drivers, they can unintentionally reshape urban traffic patterns. We simulate their impact in Florence, Milan, and Rome (Italy), integrating GPS data, road networks, and route recommendations from leading providers. We identify a concentration effect: as adoption increases, route diversity declines, and traffic and emissions converge onto fewer roads. At full adoption, route diversity decreases by up to 14% compared to a baseline where recommendations are ignored. Moreover, navigation services reduce CO$_2$ emissions at low adoption levels, but these benefits diminish, disappear, or even reverse beyond a city- and service-specific threshold. We replicate our experiments in an abstract setting, obtaining results consistent with those observed in real-world cities.
 
 
 <a id="repo-structure" name="repo-structure"></a>

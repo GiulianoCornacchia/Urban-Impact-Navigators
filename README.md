@@ -53,7 +53,6 @@ This project uses the following versions:
  - [Setup](#setup)
  - [Data Availability](#data)
 
-
 <a id='abstract' name='abstract'></a>
 ## Abstract
 

@@ -115,7 +115,7 @@ The repository is organized as follows:
 
 - **`5_compute_results.ipynb`**: This notebook aggregates the results of simulations into a comprehensive dictionary.
 
-- **`6_create_plots.ipynb`**: This notebook generates plots related to CO2 emissions and route diversity based on the aggregated results computed in the previous notebook. It uses specific dictionaries from the results to visualize the outcomes of the experiments.
+- **`6_create_plots.ipynb`**: This notebook generates plots related to CO<sub>2</sub> emissions and route diversity based on the aggregated results computed in the previous notebook. It uses specific dictionaries from the results to visualize the outcomes of the experiments.
 
 ### Scripts
 

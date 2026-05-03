@@ -120,7 +120,7 @@ The repository is organized as follows:
 ### Scripts
 
 - **`launcher_sumo_simulation.py`**: This script is designed to execute a single traffic simulation using the SUMO (Simulation of Urban MObility) simulator. It takes inputs such as a road network file and a route file, simulates the movement of vehicles, and outputs data related to traffic patterns and emissions. The script can also convert XML outputs to CSV for further analysis. It provides options for running the simulation with or without a graphical user interface (GUI) and collecting detailed trip and edge information.
-- **`launcher_traffico2.py`**: This script automates the execution of multiple simulations across various adoption rates of navigation services. It calculates "Mixed Routed Paths" (MRPs), which combine different routing strategies and simulates their effects on urban traffic and emissions. The script allows for a detailed analysis of how different levels of navigation service adoption influence route diversity, traffic congestion, and CO2 emissions. It uses the `launcher_sumo_simulation.py` script for each individual simulation.
+- **`launcher_traffico2.py`**: This script automates the execution of multiple simulations across various adoption rates of navigation services. It calculates "Mixed Routed Paths" (MRPs), which combine different routing strategies and simulates their effects on urban traffic and emissions. The script allows for a detailed analysis of how different levels of navigation service adoption influence route diversity, traffic congestion, and CO<sub>2</sub> emissions. It uses the `launcher_sumo_simulation.py` script for each individual simulation.
 
 
 ### Parameters Table for `launcher_sumo_simulation.py`

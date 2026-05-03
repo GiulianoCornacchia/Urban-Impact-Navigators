@@ -54,8 +54,6 @@ This project uses the following versions:
  - [Data Availability](#data)
 
 
-```
-
 <a id='abstract' name='abstract'></a>
 ## Abstract
 

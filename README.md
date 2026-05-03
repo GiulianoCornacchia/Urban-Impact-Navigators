@@ -22,7 +22,7 @@ Affiliations:<br>
 ____
 
 
-The proliferation of human-AI ecosystems, such as navigation services, raises concerns about their large-scale social and environmental impacts. Our study employs a simulation framework to assess how navigation services influence road network usage and CO2 emissions in urban environments. This repository provides the necessary Python code and tools to reproduce our analysis using the SUMO mobility simulator, offering insights into the collective impact of navigation services at varying adoption rates. To use the code and replicate the analysis, follow the instructions provided in this README file.
+The proliferation of human-AI ecosystems, such as navigation services, raises concerns about their large-scale social and environmental impacts. Our study employs a simulation framework to assess how navigation services influence road network usage and CO<sub>2</sub> emissions in urban environments. This repository provides the necessary Python code and tools to reproduce our analysis using the SUMO mobility simulator, offering insights into the collective impact of navigation services at varying adoption rates. To use the code and replicate the analysis, follow the instructions provided in this README file.
 
 ## Built with
 
@@ -234,7 +234,7 @@ This returns a list of 10 values corresponding to:
 * non-routed routing strategy: **`myduaw5`**
 * number of vehicles: **10,000**
 * routed vehicles: **30%**
-* metric: **total CO2 emissions**
+* metric: **total CO<sub>2</sub> emissions**
 
 ---
 
@@ -350,4 +350,4 @@ In a Terminal, execute the following steps:
 ## Data Availability
 Please note that the OctoTelematics dataset utilized in our study is proprietary and not publicly available. Therefore, the original OD-matrices employed in this research cannot be included in this repository. However, we have provided the necessary code to generate an OD-matrix for Milan using a publicly accessible [dataset](https://ckan-sobigdata.d4science.org/dataset/gps_track_milan_italy). This code is flexible and can be adapted for use with any data source. Additionally, we offer a routine to create random OD matrices, which can be useful in scenarios lacking trajectory data.
 
-Furthermore, due to proprietary restrictions, the specific navigation service suggestions used in our study cannot be included. Nonetheless, we have supplied the code to generate a fastest path assignment, replicating the functionality of a navigation service prototype. Moreover, we include a script to generate perturbations of the fastest paths for non-routed vehicles. This ensures that the code can be adapted and applied to various datasets and scenarios, facilitating research on navigation services' impact on urban traffic patterns and CO2 emissions.
+Furthermore, due to proprietary restrictions, the specific navigation service suggestions used in our study cannot be included. Nonetheless, we have supplied the code to generate a fastest path assignment, replicating the functionality of a navigation service prototype. Moreover, we include a script to generate perturbations of the fastest paths for non-routed vehicles. This ensures that the code can be adapted and applied to various datasets and scenarios, facilitating research on navigation services' impact on urban traffic patterns and CO<sub>2</sub> emissions.
